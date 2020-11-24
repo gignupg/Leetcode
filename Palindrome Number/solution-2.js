@@ -5,7 +5,7 @@
 var isPalindrome = function (x) {
     let num = x;    // Getting a copy of x that we can modify whithout changing x itself
     let revNum = 0;   // The reversed number that's supposed to equal x if it's a palindrome
-
+ 
     if (x === 0) return true
 
     if (x < 0 || x % 10 === 0) return false;
