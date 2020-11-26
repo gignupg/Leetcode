@@ -1,5 +1,5 @@
 var romanToInt = function(s) {
-    const romanInteger = {
+    const obj = {
         'I': 1,
         'V': 5,
         'X': 10,
@@ -8,17 +8,21 @@ var romanToInt = function(s) {
         'D': 500,
         'M': 1000
     }
-    const chars = s.split('')
-    let maxRight = 0
-    const result = chars.reduceRight((acc, char) => {
-        const integer = romanInteger[char] 
-        if (integer >= maxRight) {
-            maxRight = integer
-            return acc + integer
+
+    const arr = s.split('')
+    let prev = 0;
+
+    return arr.reduceRight((acc, char) => {
+        const val = obj[char]
+
+        if (prev <= val) {
+            prev = val;
+            return acc + val
+        } else {
+            prev = val;
+            return acc - val
         }
-        return acc - integer
     }, 0)
-    return result
 };
 
 console.log(romanToInt("MCMXCIV"));
