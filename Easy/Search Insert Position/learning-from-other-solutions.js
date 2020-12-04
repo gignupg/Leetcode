@@ -1,4 +1,23 @@
+// Binary-search
 
+const searchInsert = function (nums, target) {
+    let start = 0;
+    let end = nums.length - 1;
+
+    while (end - start >= 0) {
+        const mid = Math.floor((end + start) / 2);
+        const guess = nums[mid];
+
+        if (guess === target) return mid;
+        if (target < guess) end = mid - 1;
+        if (target > guess) start = mid + 1;
+    }
+
+    return start;
+};
+
+
+console.log(searchInsert([1, 3, 5, 6], 2));
 
 
 /*
@@ -21,7 +40,7 @@ Output: 0
 Example 5:
 Input: nums = [1], target = 0
 Output: 0
- 
+
 Constraints:
 1 <= nums.length <= 104
 -104 <= nums[i] <= 104
